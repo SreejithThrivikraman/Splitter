@@ -17,11 +17,7 @@ public class onBoarding extends AppCompatActivity
     int number_of_pages = 0;
     int max_onBoardingScreens = 2;
     Button skip, next, back;
-
-
-
-
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
