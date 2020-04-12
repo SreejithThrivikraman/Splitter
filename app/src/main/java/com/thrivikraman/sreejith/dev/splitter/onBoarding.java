@@ -17,7 +17,7 @@ public class onBoarding extends AppCompatActivity
     int number_of_pages = 0;
     int max_onBoardingScreens = 2;
     Button skip, next, back;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +74,7 @@ public class onBoarding extends AppCompatActivity
                 number_of_pages = introScreens.getCurrentItem();
 
                 if (number_of_pages == max_onBoardingScreens) {
-                    Intent intent = new Intent(getApplicationContext(), Home.class);
+                    Intent intent = new Intent(getApplicationContext(), LoginOptions.class);
                     startActivity(intent);
                 } else if (number_of_pages == max_onBoardingScreens - 1) {
                     next.setText("Finish");
