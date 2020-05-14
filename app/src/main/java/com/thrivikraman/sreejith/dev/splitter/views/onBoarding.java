@@ -1,12 +1,17 @@
-package com.thrivikraman.sreejith.dev.splitter;
+package com.thrivikraman.sreejith.dev.splitter.views;
 
 import android.content.Intent;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.google.android.material.tabs.TabLayout;
+import com.thrivikraman.sreejith.dev.splitter.R;
+import com.thrivikraman.sreejith.dev.splitter.adapters.onBoardingScreenAdapter;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 
 public class onBoarding extends AppCompatActivity
@@ -16,7 +21,7 @@ public class onBoarding extends AppCompatActivity
     TabLayout dots;
     int number_of_pages = 0;
     int max_onBoardingScreens = 2;
-    Button skip, next, back;
+    Button  next, back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +33,6 @@ public class onBoarding extends AppCompatActivity
         dots = findViewById(R.id.tab_layout);
         introScreens = findViewById(R.id.onBoardScreen);
 
-
         onBoardingScreenAdapter adapter = new onBoardingScreenAdapter(getSupportFragmentManager());
         introScreens.setAdapter(adapter);
 
@@ -37,24 +41,18 @@ public class onBoarding extends AppCompatActivity
         introScreens.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             @Override
-            public void onPageScrolled(int i, float v, int i1)
-            {
-                if(i == max_onBoardingScreens)
-                {
+            public void onPageScrolled(int i, float v, int i1) {
+                if (i == max_onBoardingScreens) {
                     next.setText("Finish");
-                }
-                else
-                {
+                } else {
                     next.setText("Next");
                 }
 
-                if(i == 0)
-                {
+                if (i == 0) {
                     back.setVisibility(View.INVISIBLE);
-                }else {
+                } else {
                     back.setVisibility(View.VISIBLE);
                 }
-
             }
 
             @Override

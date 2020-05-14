@@ -1,7 +1,10 @@
-package com.thrivikraman.sreejith.dev.splitter;
+package com.thrivikraman.sreejith.dev.splitter.views;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.thrivikraman.sreejith.dev.splitter.R;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Home extends AppCompatActivity {
 

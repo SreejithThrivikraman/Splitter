@@ -1,10 +1,14 @@
-package com.thrivikraman.sreejith.dev.splitter;
+package com.thrivikraman.sreejith.dev.splitter.views;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.thrivikraman.sreejith.dev.splitter.R;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginOptions extends AppCompatActivity {
 

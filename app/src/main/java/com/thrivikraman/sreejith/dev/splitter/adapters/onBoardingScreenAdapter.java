@@ -1,12 +1,14 @@
-package com.thrivikraman.sreejith.dev.splitter;
+package com.thrivikraman.sreejith.dev.splitter.adapters;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+
 
 import com.thrivikraman.sreejith.dev.splitter.Fragments.onBoardScreen_1;
 import com.thrivikraman.sreejith.dev.splitter.Fragments.onBoardScreen_2;
 import com.thrivikraman.sreejith.dev.splitter.Fragments.onBoardScreen_3;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 
 public class onBoardingScreenAdapter extends FragmentPagerAdapter {
 

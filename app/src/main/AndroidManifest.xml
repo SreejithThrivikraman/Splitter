@@ -9,8 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Home" />
-        <activity android:name=".onBoarding">
+        <activity android:name=".views.Home" />
+        <activity android:name=".views.onBoarding">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,8 +22,8 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".LoginOptions" />
-        <activity android:name=".Login"></activity>
+        <activity android:name=".views.LoginOptions" />
+        <activity android:name=".views.Login"></activity>
     </application>
 
 </manifest>

@@ -1,5 +1,9 @@
 package com.thrivikraman.sreejith.dev.splitter.models;
 
+import android.util.Patterns;
+
+import java.util.regex.Pattern;
+
 public class user {
 
     private String email,password;
@@ -23,5 +27,10 @@ public class user {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean validateEmailAddress()
+    {
+        return Patterns.EMAIL_ADDRESS.matcher(getEmail()).matches();
     }
 }
