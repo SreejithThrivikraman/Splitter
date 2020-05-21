@@ -3,12 +3,14 @@
     package="com.thrivikraman.sreejith.dev.splitter">
 
     <application
+        android:name=".GlobalApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".views.SignupActivity"></activity>
         <activity android:name=".views.Home" />
         <activity android:name=".views.onBoarding">
             <intent-filter>
@@ -18,12 +20,12 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".views.LoginOptions" />
+
+        <activity android:name=".views.Login" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
-        <activity android:name=".views.LoginOptions" />
-        <activity android:name=".views.Login"></activity>
     </application>
 
 </manifest>

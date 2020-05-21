@@ -1,11 +1,14 @@
 package com.thrivikraman.sreejith.dev.splitter.views;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.thrivikraman.sreejith.dev.splitter.GlobalApplication;
 import com.thrivikraman.sreejith.dev.splitter.R;
 import com.thrivikraman.sreejith.dev.splitter.databinding.ActivityLoginBinding;
 import com.thrivikraman.sreejith.dev.splitter.models.user;
@@ -20,6 +23,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+
+import static androidx.core.content.ContextCompat.startActivity;
 
 public class Login extends AppCompatActivity {
 
@@ -48,8 +53,7 @@ public class Login extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onChanged(@Nullable user user) {
-
-                if (TextUtils.isEmpty(Objects.requireNonNull(user).getEmail())) {
+                 if (TextUtils.isEmpty(Objects.requireNonNull(user).getEmail())) {
                     binding.emailField.setError("Enter an Email address");
                     binding.emailField.requestFocus();
                 } else if (!user.validateEmailAddress()) {
@@ -60,10 +64,22 @@ public class Login extends AppCompatActivity {
                     binding.passwordField.requestFocus();
                 } else {
                     Toast.makeText(getApplicationContext(), "login verified !", Toast.LENGTH_LONG).show();
+                     Intent IntentHome = new Intent(getApplicationContext(),Home.class);
+                     startActivity(IntentHome);
                 }
 
             }
         });
 
+        LoginModel.isBackButtonPressed().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                Intent IntentLoginOptions = new Intent(getApplicationContext(),LoginOptions.class);
+                startActivity(IntentLoginOptions);
+            }
+        });
+
     }
+
+
 }
