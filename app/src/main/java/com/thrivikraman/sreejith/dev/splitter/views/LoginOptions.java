@@ -30,6 +30,14 @@ public class LoginOptions extends AppCompatActivity {
             }
         });
 
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent IntentsigninPage = new Intent(getApplicationContext(),SignupActivity.class);
+                startActivity(IntentsigninPage);
+            }
+        });
+
 
 
 
