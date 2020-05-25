@@ -67,14 +67,14 @@ public class SignupActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Sign Up Success !", Toast.LENGTH_LONG).show();
 
                     user SampleUser = new user("Sreejith Thrivikraman", "mail.sreejith.23@gmail.com","123456789","****");
-                    expenses default_user = new expenses("23-04-1993","Coffee","Rahul","pay","No",25);
+                    expenses default_user = new expenses("null","null","null","null","null",0);
 
                     ref = connection.getDatabasePath("Users");
-
                     String mGroupId = ref.push().getKey();
                     ref.child(mGroupId).child("Details").setValue(SampleUser);
                     ref.child(mGroupId).child("Friends").setValue("null");
-                    ref.child(mGroupId).child("expenses").setValue(default_user);
+                    ref.child(mGroupId).child("expenses").push().setValue(default_user);
+
 //                    Intent IntentHome = new Intent(getApplicationContext(),Home.class);
 //                    startActivity(IntentHome);
                 }
