@@ -13,10 +13,14 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
 import com.thrivikraman.sreejith.dev.splitter.R;
 import com.thrivikraman.sreejith.dev.splitter.databinding.ActivityLoginBinding;
 import com.thrivikraman.sreejith.dev.splitter.databinding.ActivitySignupBinding;
+import com.thrivikraman.sreejith.dev.splitter.models.expenses;
 import com.thrivikraman.sreejith.dev.splitter.models.user;
+import com.thrivikraman.sreejith.dev.splitter.networks.firbaseConnectivity;
 import com.thrivikraman.sreejith.dev.splitter.viewModels.LoginViewModel;
 import com.thrivikraman.sreejith.dev.splitter.viewModels.SignInViewModel;
 
@@ -26,12 +30,15 @@ public class SignupActivity extends AppCompatActivity {
 
     private SignInViewModel SignInModel;
     private ActivitySignupBinding bindingSignUp;
-
+    private DatabaseReference ref;
+    private firbaseConnectivity connection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
+      connection = new firbaseConnectivity();
 
 
         SignInModel = ViewModelProviders.of(this).get(SignInViewModel.class);
@@ -47,9 +54,9 @@ public class SignupActivity extends AppCompatActivity {
                 if (TextUtils.isEmpty(Objects.requireNonNull(user).getFullName())) {
                     bindingSignUp.fullNameField.setError("Enter the full name !");
                     bindingSignUp.fullNameField.requestFocus();
-                } else if (!user.validateEmailAddress()) {
-                    bindingSignUp.emailField.setError("Enter a Valid E-mail Address");
-                    bindingSignUp.emailField.requestFocus();
+//                } else if (!user.validateEmailAddress()) {
+//                    bindingSignUp.emailField.setError("Enter a Valid E-mail Address");
+//                    bindingSignUp.emailField.requestFocus();
                 } else if (TextUtils.isEmpty(Objects.requireNonNull(user).getEmail())) {
                     bindingSignUp.emailField.setError("Enter an Email address");
                     bindingSignUp.emailField.requestFocus();
@@ -58,8 +65,18 @@ public class SignupActivity extends AppCompatActivity {
                     bindingSignUp.passwordField.requestFocus();
                 } else {
                     Toast.makeText(getApplicationContext(), "Sign Up Success !", Toast.LENGTH_LONG).show();
-                    Intent IntentHome = new Intent(getApplicationContext(),Home.class);
-                    startActivity(IntentHome);
+
+                    user SampleUser = new user("Sreejith Thrivikraman", "mail.sreejith.23@gmail.com","123456789","****");
+                    expenses default_user = new expenses("23-04-1993","Coffee","Rahul","pay","No",25);
+
+                    ref = connection.getDatabasePath("Users");
+
+                    String mGroupId = ref.push().getKey();
+                    ref.child(mGroupId).child("Details").setValue(SampleUser);
+                    ref.child(mGroupId).child("Friends").setValue("null");
+                    ref.child(mGroupId).child("expenses").setValue(default_user);
+//                    Intent IntentHome = new Intent(getApplicationContext(),Home.class);
+//                    startActivity(IntentHome);
                 }
             }
         });

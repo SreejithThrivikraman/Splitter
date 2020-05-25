@@ -6,17 +6,26 @@ import java.util.regex.Pattern;
 
 public class user {
 
-    private String email,password, fullName;
+    private String email,password, fullName,phoneNumber;
 
     public user(String email,String password) {
         this.email = email;
         this.password = password;
     }
 
-    public user(String email,String password, String fullName) {
+    public user(String fullName,String email,String phone,String Password) {
         this.email = email;
-        this.password = password;
+        this.password = Password;
         this.fullName = fullName;
+        this.phoneNumber = phone;
+    }
+
+// test class
+    public user(String fullName,String email,String Password) {
+        this.email = email;
+        this.password = Password;
+        this.fullName = fullName;
+        this.phoneNumber = "111-111-1111";
     }
 
     public String getEmail() {
@@ -32,6 +41,8 @@ public class user {
     public String getPassword() {
         return password;
     }
+
+    public String getPhoneNumber() { return phoneNumber; }
 
     public void setPassword(String password) {
         this.password = password;
