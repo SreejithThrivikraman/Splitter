@@ -13,19 +13,11 @@ public class user {
         this.password = password;
     }
 
-    public user(String fullName,String email,String phone,String Password) {
+    public user(String fullName,String email,String Password,String phone) {
+        this.fullName = fullName;
         this.email = email;
         this.password = Password;
-        this.fullName = fullName;
         this.phoneNumber = phone;
-    }
-
-// test class
-    public user(String fullName,String email,String Password) {
-        this.email = email;
-        this.password = Password;
-        this.fullName = fullName;
-        this.phoneNumber = "111-111-1111";
     }
 
     public String getEmail() {

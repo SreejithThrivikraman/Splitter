@@ -15,6 +15,7 @@ public class SignInViewModel extends ViewModel {
     public MutableLiveData<String> FullName = new MutableLiveData<>();
     public MutableLiveData<String> emailAddress = new MutableLiveData<>();
     public MutableLiveData<String> password = new MutableLiveData<>();
+    public MutableLiveData<String> phone = new MutableLiveData<>();
     public MutableLiveData<Boolean> backPageStatus = new MutableLiveData<>();
     private MutableLiveData<user>  userMutableLiveData;
     private DatabaseReference ref;
@@ -35,7 +36,7 @@ public class SignInViewModel extends ViewModel {
 
 
     public void onClickSignUp(View view) {
-        user signUpUser = new user(emailAddress.getValue(), password.getValue(),FullName.getValue());
+        user signUpUser = new user(FullName.getValue(),emailAddress.getValue(), password.getValue(), phone.getValue());
         userMutableLiveData.setValue(signUpUser);
     }
 
@@ -51,7 +52,7 @@ public class SignInViewModel extends ViewModel {
     /* createUser method is called when the user taps the sign-in button.
        Creates a new user in 'Users' node on firebase */
     public boolean createUser(user SampleUser, expenses default_user)
-    {   
+    {
          ref = connection.getDatabasePath("Users");
          mGroupId = ref.push().getKey();
          ref.child(mGroupId).child("Details").setValue(SampleUser);

@@ -57,7 +57,7 @@ public class SignupActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(getApplicationContext(), "Sign Up Success !", Toast.LENGTH_LONG).show();
 
-                    user SampleUser = new user("Sreejith Thrivikraman", "mail.sreejith.23@gmail.com","123456789","****");
+                    user SampleUser = new user(user.getFullName(), user.getEmail(),user.getPassword(),user.getPhoneNumber());
                     expenses default_user = new expenses("null","null","null","null","null",0);
                     firebaseQueryflag = SignInModel.createUser(SampleUser, default_user);
 
