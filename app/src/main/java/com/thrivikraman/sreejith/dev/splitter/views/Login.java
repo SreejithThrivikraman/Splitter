@@ -1,4 +1,5 @@
 package com.thrivikraman.sreejith.dev.splitter.views;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -11,17 +12,18 @@ import android.widget.Toast;
 import com.thrivikraman.sreejith.dev.splitter.GlobalApplication;
 import com.thrivikraman.sreejith.dev.splitter.R;
 import com.thrivikraman.sreejith.dev.splitter.databinding.ActivityLoginBinding;
+import com.thrivikraman.sreejith.dev.splitter.models.Status;
 import com.thrivikraman.sreejith.dev.splitter.models.user;
 import com.thrivikraman.sreejith.dev.splitter.viewModels.LoginViewModel;
 import java.util.Objects;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import static androidx.core.content.ContextCompat.startActivity;
 
 public class Login extends AppCompatActivity {
 
@@ -61,14 +63,7 @@ public class Login extends AppCompatActivity {
                     binding.passwordField.requestFocus();
                 } else {
                      user loginUser = new user(user.getEmail(),user.getPassword());
-                     authenticationSuccess = LoginModel.authenticateUser(loginUser);
-
-                     if(authenticationSuccess){
-                         Intent IntentHome = new Intent(getApplicationContext(),Home.class);
-                         startActivity(IntentHome);
-                     } else {
-                         Toast.makeText(getApplicationContext(), "Login failed !", Toast.LENGTH_LONG).show();
-                     }
+                     LoginModel.authenticateUser(loginUser);
                 }
 
             }
@@ -79,6 +74,28 @@ public class Login extends AppCompatActivity {
             public void onChanged(Boolean aBoolean) {
                 Intent IntentLoginOptions = new Intent(getApplicationContext(),LoginOptions.class);
                 startActivity(IntentLoginOptions);
+            }
+        });
+
+        LoginModel.updateLoginInStatus().observe(this, new Observer<Status>() {
+            @Override
+            public void onChanged(Status Status) {
+                if (Status.isFlag()) {
+                    Toast.makeText(getApplicationContext(), "Login in Success !", Toast.LENGTH_LONG).show();
+                    Intent IntentHome = new Intent(getApplicationContext(),Home.class);
+                    startActivity(IntentHome);
+                } else {
+                    AlertDialog alertDialog = new AlertDialog.Builder(Login.this).create();
+                    alertDialog.setTitle("Oops..");
+                    alertDialog.setMessage(Status.getMessage());
+                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                    alertDialog.show();
+                }
             }
         });
 

@@ -1,11 +1,14 @@
 package com.thrivikraman.sreejith.dev.splitter.models;
 
-public class loginStatus {
+
+/* Status flag for  confirming login and sign-in status */
+
+public class Status {
 
     private String message;
     private boolean flag;
 
-    public loginStatus(String message, boolean flag) {
+    public Status(String message, boolean flag) {
         this.message = message;
         this.flag = flag;
     }

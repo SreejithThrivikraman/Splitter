@@ -2,7 +2,7 @@ package com.thrivikraman.sreejith.dev.splitter.viewModels;
 
 import android.util.Log;
 import android.view.View;
-import com.thrivikraman.sreejith.dev.splitter.models.loginStatus;
+import com.thrivikraman.sreejith.dev.splitter.models.Status;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -22,7 +22,7 @@ public class SignInViewModel extends ViewModel {
     public MutableLiveData<String> password = new MutableLiveData<>();
     public MutableLiveData<String> phone = new MutableLiveData<>();
     public MutableLiveData<Boolean> backPageStatus = new MutableLiveData<>();
-    private MutableLiveData<loginStatus> Status = new MutableLiveData<>();
+    private MutableLiveData<Status> Status = new MutableLiveData<>();
     private MutableLiveData<user>  userMutableLiveData;
     private DatabaseReference ref;
     private firbaseConnectivity connection;
@@ -47,7 +47,7 @@ public class SignInViewModel extends ViewModel {
         userMutableLiveData.setValue(signUpUser);
     }
 
-    public MutableLiveData<loginStatus> updateSignInStatus()
+    public MutableLiveData<Status> updateSignInStatus()
     {
         return Status;
     }
@@ -63,7 +63,7 @@ public class SignInViewModel extends ViewModel {
 
     /* createUser method is called when the user taps the sign-in button.
        Creates a new user in 'Users' node on firebase */
-    
+
     public void createUser(final user SampleUser, final expenses default_user)
     {    authentication = FirebaseAuth.getInstance();
 
@@ -72,7 +72,7 @@ public class SignInViewModel extends ViewModel {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Status.setValue(new loginStatus("Success",true));
+                            Status.setValue(new Status("Success",true));
                             ref = connection.getDatabasePath("Users");
                             mGroupId = ref.push().getKey();
                             ref.child(mGroupId).child("Details").setValue(SampleUser);
@@ -81,7 +81,7 @@ public class SignInViewModel extends ViewModel {
 
                         } else {
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Status.setValue(new loginStatus(task.getException().getMessage(),false));
+                            Status.setValue(new Status(task.getException().getMessage(),false));
 
                         }
                     }

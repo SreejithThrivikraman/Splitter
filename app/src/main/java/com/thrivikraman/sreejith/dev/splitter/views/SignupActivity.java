@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.thrivikraman.sreejith.dev.splitter.R;
 import com.thrivikraman.sreejith.dev.splitter.databinding.ActivitySignupBinding;
 import com.thrivikraman.sreejith.dev.splitter.models.expenses;
-import com.thrivikraman.sreejith.dev.splitter.models.loginStatus;
+import com.thrivikraman.sreejith.dev.splitter.models.Status;
 import com.thrivikraman.sreejith.dev.splitter.models.user;
 import com.thrivikraman.sreejith.dev.splitter.viewModels.SignInViewModel;
 
@@ -70,17 +70,17 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
 
-        SignInModel.updateSignInStatus().observe(this, new Observer<loginStatus>() {
+        SignInModel.updateSignInStatus().observe(this, new Observer<Status>() {
             @Override
-            public void onChanged(loginStatus loginStatus) {
-                if (loginStatus.isFlag() == true) {
+            public void onChanged(Status Status) {
+                if (Status.isFlag() == true) {
                     Toast.makeText(getApplicationContext(), "Sign Up Success !", Toast.LENGTH_LONG).show();
                     Intent IntentHome = new Intent(getApplicationContext(),Home.class);
                     startActivity(IntentHome);
                 } else {
                     AlertDialog alertDialog = new AlertDialog.Builder(SignupActivity.this).create();
                     alertDialog.setTitle("Oops..");
-                    alertDialog.setMessage(loginStatus.getMessage());
+                    alertDialog.setMessage(Status.getMessage());
                     alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
