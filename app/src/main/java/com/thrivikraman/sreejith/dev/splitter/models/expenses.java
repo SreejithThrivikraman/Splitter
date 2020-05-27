@@ -1,5 +1,7 @@
 package com.thrivikraman.sreejith.dev.splitter.models;
 
+
+/* The model class for creating the object for the entity "expense" */
 public class expenses {
 
     private String date,expenseName, friendName,status,groupStatus;

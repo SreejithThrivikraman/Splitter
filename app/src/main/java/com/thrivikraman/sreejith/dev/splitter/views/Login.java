@@ -13,10 +13,7 @@ import com.thrivikraman.sreejith.dev.splitter.R;
 import com.thrivikraman.sreejith.dev.splitter.databinding.ActivityLoginBinding;
 import com.thrivikraman.sreejith.dev.splitter.models.user;
 import com.thrivikraman.sreejith.dev.splitter.viewModels.LoginViewModel;
-
-
 import java.util.Objects;
-
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,9 +28,9 @@ public class Login extends AppCompatActivity {
 
     TextView text_passwordReset;
     String string_passwordReset = "<u>Forgot your Password ?</u>";
-    private String testTag = "Sreejith >>>>> Test >>>>>> ";
     private LoginViewModel LoginModel;
     private ActivityLoginBinding binding;
+    private boolean authenticationSuccess = false;
 
 
     @Override
@@ -63,9 +60,15 @@ public class Login extends AppCompatActivity {
                     binding.passwordField.setError("Enter the password !");
                     binding.passwordField.requestFocus();
                 } else {
-                    Toast.makeText(getApplicationContext(), "login verified !", Toast.LENGTH_LONG).show();
-                     Intent IntentHome = new Intent(getApplicationContext(),Home.class);
-                     startActivity(IntentHome);
+                     user loginUser = new user(user.getEmail(),user.getPassword());
+                     authenticationSuccess = LoginModel.authenticateUser(loginUser);
+
+                     if(authenticationSuccess){
+                         Intent IntentHome = new Intent(getApplicationContext(),Home.class);
+                         startActivity(IntentHome);
+                     } else {
+                         Toast.makeText(getApplicationContext(), "Login failed !", Toast.LENGTH_LONG).show();
+                     }
                 }
 
             }

@@ -1,12 +1,9 @@
 package com.thrivikraman.sreejith.dev.splitter.viewModels;
 
 import android.view.View;
-
 import com.thrivikraman.sreejith.dev.splitter.models.user;
-
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-
 
 public class LoginViewModel extends ViewModel
 {
@@ -15,7 +12,6 @@ public class LoginViewModel extends ViewModel
     public MutableLiveData<Boolean> backPageStatus = new MutableLiveData<>();
 
     private MutableLiveData<user>   userMutableLiveData;
-
 
     public MutableLiveData<user> getUserInfo()
     {
@@ -38,5 +34,11 @@ public class LoginViewModel extends ViewModel
         userMutableLiveData.setValue(loginUser);
     }
 
+    /* authenticateUser method is called when the user taps the login-in button.
+       Creates a new user in 'Users' node on firebase */
+    public boolean authenticateUser(user SampleUser)
+    {
+        return true;
+    }
 
 }

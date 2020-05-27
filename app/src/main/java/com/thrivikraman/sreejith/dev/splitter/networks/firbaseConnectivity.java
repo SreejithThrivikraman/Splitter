@@ -8,7 +8,6 @@ public class firbaseConnectivity {
     private DatabaseReference database;
 
     public firbaseConnectivity() {
-
         database = FirebaseDatabase.getInstance().getReference();
     }
 
