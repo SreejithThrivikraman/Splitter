@@ -82,7 +82,7 @@ public class Login extends AppCompatActivity {
             public void onChanged(Status Status) {
                 if (Status.isFlag()) {
                     Toast.makeText(getApplicationContext(), "Login in Success !", Toast.LENGTH_LONG).show();
-                    Intent IntentHome = new Intent(getApplicationContext(),Home.class);
+                    Intent IntentHome = new Intent(getApplicationContext(),UserHome.class);
                     startActivity(IntentHome);
                 } else {
                     AlertDialog alertDialog = new AlertDialog.Builder(Login.this).create();
