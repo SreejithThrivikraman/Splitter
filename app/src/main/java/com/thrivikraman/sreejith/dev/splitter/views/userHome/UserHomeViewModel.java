@@ -1,4 +1,4 @@
-package com.thrivikraman.sreejith.dev.splitter.viewModels;
+package com.thrivikraman.sreejith.dev.splitter.views.userHome;
 import android.util.Log;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

@@ -1,4 +1,4 @@
-package com.thrivikraman.sreejith.dev.splitter.viewModels;
+package com.thrivikraman.sreejith.dev.splitter.views.signin;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -8,7 +8,7 @@ import android.view.View;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
-import com.thrivikraman.sreejith.dev.splitter.GlobalApplication;
+import com.thrivikraman.sreejith.dev.splitter.Global.GlobalApplication;
 import com.thrivikraman.sreejith.dev.splitter.models.Status;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

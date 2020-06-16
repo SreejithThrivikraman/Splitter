@@ -5,12 +5,12 @@
     <data>
         <variable
             name="signInModel"
-            type="com.thrivikraman.sreejith.dev.splitter.viewModels.SignInViewModel" />
+            type="com.thrivikraman.sreejith.dev.splitter.views.signin.SignInViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".views.SignupActivity">
+        tools:context=".views.signin.SignupActivity">
 
         <ImageView
             android:id="@+id/imageView3"

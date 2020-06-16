@@ -1,4 +1,4 @@
-package com.thrivikraman.sreejith.dev.splitter;
+package com.thrivikraman.sreejith.dev.splitter.Global;
 
 import android.app.Application;
 import android.content.Context;

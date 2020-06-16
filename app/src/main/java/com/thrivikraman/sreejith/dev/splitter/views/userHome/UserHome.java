@@ -1,21 +1,15 @@
-package com.thrivikraman.sreejith.dev.splitter.views;
+package com.thrivikraman.sreejith.dev.splitter.views.userHome;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.thrivikraman.sreejith.dev.splitter.GlobalApplication;
+import com.thrivikraman.sreejith.dev.splitter.Global.GlobalApplication;
 import com.thrivikraman.sreejith.dev.splitter.R;
-import com.thrivikraman.sreejith.dev.splitter.viewModels.LoginViewModel;
-import com.thrivikraman.sreejith.dev.splitter.viewModels.SignInViewModel;
-import com.thrivikraman.sreejith.dev.splitter.viewModels.UserHomeViewModel;
 
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -65,7 +59,7 @@ public class UserHome extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 
         UserHomeModel = ViewModelProviders.of(this).get(UserHomeViewModel.class);
-        setupHeadder();
+        setupHeader();
     }
 
     @Override
@@ -84,7 +78,7 @@ public class UserHome extends AppCompatActivity {
 
 
     // Set the navigation Drawer Header.
-    public void setupHeadder()
+    public void setupHeader()
     {
         UserHomeModel.fetchLoggedUserEmail().observe(this, new Observer<String>() {
             @Override

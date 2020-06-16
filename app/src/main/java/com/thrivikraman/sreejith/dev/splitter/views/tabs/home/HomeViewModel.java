@@ -1,4 +1,4 @@
-package com.thrivikraman.sreejith.dev.splitter.views.ui.home;
+package com.thrivikraman.sreejith.dev.splitter.views.tabs.home;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

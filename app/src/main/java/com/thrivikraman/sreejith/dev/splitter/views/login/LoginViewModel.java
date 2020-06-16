@@ -1,4 +1,4 @@
-package com.thrivikraman.sreejith.dev.splitter.viewModels;
+package com.thrivikraman.sreejith.dev.splitter.views.login;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
@@ -12,7 +12,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
-import com.thrivikraman.sreejith.dev.splitter.GlobalApplication;
+import com.thrivikraman.sreejith.dev.splitter.Global.GlobalApplication;
 import com.thrivikraman.sreejith.dev.splitter.models.Status;
 import com.thrivikraman.sreejith.dev.splitter.models.user;
 import com.thrivikraman.sreejith.dev.splitter.networks.firbaseConnectivity;

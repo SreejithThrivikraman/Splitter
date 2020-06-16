@@ -1,20 +1,20 @@
-package com.thrivikraman.sreejith.dev.splitter.views;
+package com.thrivikraman.sreejith.dev.splitter.views.login;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.thrivikraman.sreejith.dev.splitter.GlobalApplication;
 import com.thrivikraman.sreejith.dev.splitter.R;
 import com.thrivikraman.sreejith.dev.splitter.databinding.ActivityLoginBinding;
 import com.thrivikraman.sreejith.dev.splitter.models.Status;
 import com.thrivikraman.sreejith.dev.splitter.models.user;
-import com.thrivikraman.sreejith.dev.splitter.viewModels.LoginViewModel;
+import com.thrivikraman.sreejith.dev.splitter.views.LoginOptions;
+import com.thrivikraman.sreejith.dev.splitter.views.userHome.UserHome;
+
 import java.util.Objects;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -72,7 +72,7 @@ public class Login extends AppCompatActivity {
         LoginModel.isBackButtonPressed().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
-                Intent IntentLoginOptions = new Intent(getApplicationContext(),LoginOptions.class);
+                Intent IntentLoginOptions = new Intent(getApplicationContext(), LoginOptions.class);
                 startActivity(IntentLoginOptions);
             }
         });
@@ -82,7 +82,7 @@ public class Login extends AppCompatActivity {
             public void onChanged(Status Status) {
                 if (Status.isFlag()) {
                     Toast.makeText(getApplicationContext(), "Login in Success !", Toast.LENGTH_LONG).show();
-                    Intent IntentHome = new Intent(getApplicationContext(),UserHome.class);
+                    Intent IntentHome = new Intent(getApplicationContext(), UserHome.class);
                     startActivity(IntentHome);
                 } else {
                     AlertDialog alertDialog = new AlertDialog.Builder(Login.this).create();

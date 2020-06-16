@@ -1,4 +1,4 @@
-package com.thrivikraman.sreejith.dev.splitter.views;
+package com.thrivikraman.sreejith.dev.splitter.views.signin;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
@@ -19,7 +19,8 @@ import com.thrivikraman.sreejith.dev.splitter.databinding.ActivitySignupBinding;
 import com.thrivikraman.sreejith.dev.splitter.models.expenses;
 import com.thrivikraman.sreejith.dev.splitter.models.Status;
 import com.thrivikraman.sreejith.dev.splitter.models.user;
-import com.thrivikraman.sreejith.dev.splitter.viewModels.SignInViewModel;
+import com.thrivikraman.sreejith.dev.splitter.views.LoginOptions;
+import com.thrivikraman.sreejith.dev.splitter.views.userHome.UserHome;
 
 import java.util.Objects;
 
@@ -65,7 +66,7 @@ public class SignupActivity extends AppCompatActivity {
         SignInModel.isBackButtonPressed().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
-                Intent IntentLoginOptions = new Intent(getApplicationContext(),LoginOptions.class);
+                Intent IntentLoginOptions = new Intent(getApplicationContext(), LoginOptions.class);
                 startActivity(IntentLoginOptions);
             }
         });
@@ -75,7 +76,7 @@ public class SignupActivity extends AppCompatActivity {
             public void onChanged(Status Status) {
                 if (Status.isFlag() == true) {
                     Toast.makeText(getApplicationContext(), "Sign Up Success !", Toast.LENGTH_LONG).show();
-                    Intent IntentHome = new Intent(getApplicationContext(),UserHome.class);
+                    Intent IntentHome = new Intent(getApplicationContext(), UserHome.class);
                     startActivity(IntentHome);
                 } else {
                     AlertDialog alertDialog = new AlertDialog.Builder(SignupActivity.this).create();

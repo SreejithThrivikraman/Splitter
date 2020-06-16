@@ -6,13 +6,13 @@
     <data>
         <variable
             name="loginModel"
-            type="com.thrivikraman.sreejith.dev.splitter.viewModels.LoginViewModel" />
+            type="com.thrivikraman.sreejith.dev.splitter.views.login.LoginViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".views.Login">
+        tools:context=".views.login.Login">
 
         <ImageView
             android:id="@+id/imageView3"

@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.thrivikraman.sreejith.dev.splitter.R;
+import com.thrivikraman.sreejith.dev.splitter.views.login.Login;
+import com.thrivikraman.sreejith.dev.splitter.views.signin.SignupActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,7 +27,7 @@ public class LoginOptions extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent loginPage = new Intent(getApplicationContext(),Login.class);
+                Intent loginPage = new Intent(getApplicationContext(), Login.class);
                 startActivity(loginPage);
             }
         });
@@ -33,7 +35,7 @@ public class LoginOptions extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent IntentsigninPage = new Intent(getApplicationContext(),SignupActivity.class);
+                Intent IntentsigninPage = new Intent(getApplicationContext(), SignupActivity.class);
                 startActivity(IntentsigninPage);
             }
         });

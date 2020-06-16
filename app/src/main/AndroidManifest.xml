@@ -3,7 +3,7 @@
     package="com.thrivikraman.sreejith.dev.splitter">
 
     <application
-        android:name=".GlobalApplication"
+        android:name=".Global.GlobalApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".views.UserHome"
+            android:name=".views.userHome.UserHome"
             android:label="@string/title_activity_user_home"
             android:theme="@style/AppTheme.NoActionBar">
 <!--            <intent-filter>-->
@@ -19,7 +19,7 @@
 <!--                <category android:name="android.intent.category.LAUNCHER" />-->
 <!--            </intent-filter>-->
         </activity>
-        <activity android:name=".views.SignupActivity" />
+        <activity android:name=".views.signin.SignupActivity" />
         <activity android:name=".views.onBoarding">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".views.LoginOptions" />
-        <activity android:name=".views.Login" />
+        <activity android:name=".views.login.Login" />
 
         <meta-data
             android:name="preloaded_fonts"
