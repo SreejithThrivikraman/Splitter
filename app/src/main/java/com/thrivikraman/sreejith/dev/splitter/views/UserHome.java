@@ -1,12 +1,15 @@
 package com.thrivikraman.sreejith.dev.splitter.views;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
+import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.widget.TextView;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
+import com.thrivikraman.sreejith.dev.splitter.GlobalApplication;
 import com.thrivikraman.sreejith.dev.splitter.R;
 
 import androidx.navigation.NavController;
@@ -20,6 +23,10 @@ import androidx.appcompat.widget.Toolbar;
 public class UserHome extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    public static final String SharedPref = "SHARED_PREF";
+    public static final String shared_Pref_Email = "SHARED_PREF-EMAIL";
+    public static final String shared_Pref_userName = "SHARED_PREF-USERNAME";
+    private Context appContext = GlobalApplication.getAppContext();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,16 +36,33 @@ public class UserHome extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        TextView userEmail,loggedUserName;
         NavigationView navigationView = findViewById(R.id.nav_view);
+        View mnavigationHeader = navigationView.getHeaderView(0);
+
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
                 .setDrawerLayout(drawer)
                 .build();
+
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+
+        // retriving email and name
+        SharedPreferences sh = appContext.getSharedPreferences(SharedPref,Context.MODE_PRIVATE);
+        String email = sh.getString(shared_Pref_Email,"Unknown email");
+        String currentUserName = sh.getString(shared_Pref_userName,"Unknown Userzz");
+
+
+        userEmail = mnavigationHeader.findViewById(R.id.nav_Email);
+        loggedUserName = mnavigationHeader.findViewById(R.id.loggedInUsername);
+        userEmail.setText(email);
+        loggedUserName.setText(currentUserName);
     }
 
     @Override

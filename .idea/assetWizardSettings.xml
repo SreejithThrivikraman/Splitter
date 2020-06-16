@@ -60,8 +60,8 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="foregroundImage" value="$PROJECT_DIR$/../coin_us_dollar_icon_128.png" />
-                                      <entry key="legacyIconShape" value="CIRCLE" />
+                                      <entry key="foregroundImage" value="$PROJECT_DIR$/../floralpatterns.jpg" />
+                                      <entry key="outputName" value="ic_nav_background" />
                                     </map>
                                   </option>
                                 </PersistentState>

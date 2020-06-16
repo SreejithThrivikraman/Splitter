@@ -29,6 +29,6 @@
     <string name="menu_copyright">Copyright © 2020 Sreejith Thrivikraman </string>
     <string name="menu_version">v1.0 </string>
 
-
+    <string name="saved_user_email">userEmail</string>
     <string name="home_second">Home Second</string>
 </resources>
