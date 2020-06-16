@@ -9,9 +9,16 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.thrivikraman.sreejith.dev.splitter.GlobalApplication;
 import com.thrivikraman.sreejith.dev.splitter.R;
+import com.thrivikraman.sreejith.dev.splitter.viewModels.LoginViewModel;
+import com.thrivikraman.sreejith.dev.splitter.viewModels.SignInViewModel;
+import com.thrivikraman.sreejith.dev.splitter.viewModels.UserHomeViewModel;
 
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -27,6 +34,10 @@ public class UserHome extends AppCompatActivity {
     public static final String shared_Pref_Email = "SHARED_PREF-EMAIL";
     public static final String shared_Pref_userName = "SHARED_PREF-USERNAME";
     private Context appContext = GlobalApplication.getAppContext();
+    private TextView userEmail,loggedUserName;
+    private UserHomeViewModel UserHomeModel;
+    private UserHomeViewModel userHomeVm;
+    private FirebaseAuth currentUserData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,12 +45,13 @@ public class UserHome extends AppCompatActivity {
         setContentView(R.layout.activity_user_home);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        TextView userEmail,loggedUserName;
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        View mnavigationHeader = navigationView.getHeaderView(0);
+         NavigationView navigationView = findViewById(R.id.nav_view);
 
+         //Setup Navigation Header
+        View mnavigationHeader = navigationView.getHeaderView(0);
+        userEmail = mnavigationHeader.findViewById(R.id.nav_Email);
+        loggedUserName = mnavigationHeader.findViewById(R.id.loggedInUsername);
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -52,17 +64,8 @@ public class UserHome extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-
-        // retriving email and name
-        SharedPreferences sh = appContext.getSharedPreferences(SharedPref,Context.MODE_PRIVATE);
-        String email = sh.getString(shared_Pref_Email,"Unknown email");
-        String currentUserName = sh.getString(shared_Pref_userName,"Unknown Userzz");
-
-
-        userEmail = mnavigationHeader.findViewById(R.id.nav_Email);
-        loggedUserName = mnavigationHeader.findViewById(R.id.loggedInUsername);
-        userEmail.setText(email);
-        loggedUserName.setText(currentUserName);
+        UserHomeModel = ViewModelProviders.of(this).get(UserHomeViewModel.class);
+        setupHeadder();
     }
 
     @Override
@@ -78,4 +81,36 @@ public class UserHome extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+
+    // Set the navigation Drawer Header.
+    public void setupHeadder()
+    {
+        UserHomeModel.fetchLoggedUserEmail().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String loggedInUserEmail) {
+
+                if(loggedInUserEmail != null ) {
+                    userEmail.setText(loggedInUserEmail);
+                }
+                else {
+                    userEmail.setText("Unknown User");
+                }
+            }
+        });
+
+        UserHomeModel.fetchLoggedUserName().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String loggedInUserEmail) {
+
+                if(loggedInUserEmail != null) {
+                    loggedUserName.setText(loggedInUserEmail);
+                } else {
+                    loggedUserName.setText("Unknown User");
+                }
+
+            }
+        });
+    }
+
 }

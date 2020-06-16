@@ -29,7 +29,7 @@ public class LoginViewModel extends ViewModel
     public MutableLiveData<Boolean> backPageStatus = new MutableLiveData<>();
     private MutableLiveData<Status> Status = new MutableLiveData<>();
     private String TAG = "Debug : Login Status : ";
-    private FirebaseAuth authentication, userRefrence;
+    private FirebaseAuth authentication;
     private Context appContext = GlobalApplication.getAppContext();
 
     public static final String SharedPref = "SHARED_PREF";
