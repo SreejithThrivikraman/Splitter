@@ -16,7 +16,6 @@ import com.thrivikraman.sreejith.dev.splitter.GlobalApplication;
 import com.thrivikraman.sreejith.dev.splitter.models.Status;
 import com.thrivikraman.sreejith.dev.splitter.models.user;
 import com.thrivikraman.sreejith.dev.splitter.networks.firbaseConnectivity;
-
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -99,7 +98,7 @@ public class LoginViewModel extends ViewModel
                                             userName = "Unknown User";
                                         }
                                     }
-                                    saveUserdata(SampleUser.getEmail(),userName);
+//                                    saveUserdata(SampleUser.getEmail(),userName);
                                 }
 
                                 @Override

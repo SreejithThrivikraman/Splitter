@@ -52,10 +52,11 @@ public class Login extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onChanged(@Nullable user user) {
-                 if (TextUtils.isEmpty(Objects.requireNonNull(user).getEmail())) {
-                    binding.emailField.setError("Enter an Email address");
-                    binding.emailField.requestFocus();
-                } else if (!user.validateEmailAddress()) {
+//                 if (TextUtils.isEmpty(Objects.requireNonNull(user).getEmail())) {
+//                    binding.emailField.setError("Enter an Email address");
+//                    binding.emailField.requestFocus();
+//                } else
+                  if (!user.validateEmailAddress()) {
                     binding.emailField.setError("Enter a Valid E-mail Address");
                     binding.emailField.requestFocus();
                 } else if (TextUtils.isEmpty(Objects.requireNonNull(user).getPassword())) {
