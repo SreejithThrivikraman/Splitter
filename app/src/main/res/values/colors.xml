@@ -7,7 +7,6 @@
     <color name="black">#000</color>
     <color name="hintGrey">#808080</color>
 
-
     <!-- onboarding screen background-->
     <color name="onboardingStartColor">#000000</color>
     <color name="onboardingEndColor">#434343</color>

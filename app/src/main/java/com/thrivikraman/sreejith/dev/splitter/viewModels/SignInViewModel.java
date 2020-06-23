@@ -36,11 +36,6 @@ public class SignInViewModel extends ViewModel {
     private FirebaseAuth authentication;
     private String mGroupId;
     private String TAG = "Firebase auth - User Creation status";
-    private Context appContext = GlobalApplication.getAppContext();
-
-    public static final String SharedPref = "SHARED_PREFC";
-    public static final String shared_Pref_Email = "SHARED_PREF-EMAIL";
-    public static final String shared_Pref_userName = "SHARED_PREF-USERNAME";
     private static String userName;
 
     public SignInViewModel() {
@@ -106,7 +101,7 @@ public class SignInViewModel extends ViewModel {
                                             userName = "Unknown User";
                                         }
                                     }
-                                    saveUserdata(SampleUser.getEmail(),userName);
+
                                 }
 
                                 @Override
@@ -125,16 +120,4 @@ public class SignInViewModel extends ViewModel {
                     }
                 });
     }
-
-    public void saveUserdata(String email, String userName) {
-
-
-        SharedPreferences sh = appContext.getSharedPreferences(SharedPref, Context.MODE_PRIVATE);
-        SharedPreferences.Editor ed = sh.edit();
-        ed.putString(shared_Pref_Email,email);
-        System.out.println("Entered user name ==== "+email + ">>>>" + userName );
-        ed.putString(shared_Pref_userName,userName);
-        ed.commit();
-    }
-
 }

@@ -29,11 +29,6 @@ public class LoginViewModel extends ViewModel
     private MutableLiveData<Status> Status = new MutableLiveData<>();
     private String TAG = "Debug : Login Status : ";
     private FirebaseAuth authentication;
-    private Context appContext = GlobalApplication.getAppContext();
-
-    public static final String SharedPref = "SHARED_PREF";
-    public static final String shared_Pref_Email = "SHARED_PREF-EMAIL";
-    public static final String shared_Pref_userName = "SHARED_PREF-USERNAME";
     private static String userName;
 
     private MutableLiveData<user>   userMutableLiveData;
@@ -98,7 +93,7 @@ public class LoginViewModel extends ViewModel
                                             userName = "Unknown User";
                                         }
                                     }
-//                                    saveUserdata(SampleUser.getEmail(),userName);
+
                                 }
 
                                 @Override
@@ -116,14 +111,4 @@ public class LoginViewModel extends ViewModel
                     }
                 });
     }
-
-    // method to store logged in user Email and User name in shared preference variable.
-    public void saveUserdata(String email, String userName) {
-        SharedPreferences sh = appContext.getSharedPreferences(SharedPref,Context.MODE_PRIVATE);
-        SharedPreferences.Editor ed = sh.edit();
-        ed.putString(shared_Pref_Email,email);
-        ed.putString(shared_Pref_userName,userName);
-        ed.commit();
-    }
-
 }

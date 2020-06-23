@@ -30,9 +30,6 @@ import androidx.appcompat.widget.Toolbar;
 public class UserHome extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-    public static final String SharedPref = "SHARED_PREF";
-    public static final String shared_Pref_Email = "SHARED_PREF-EMAIL";
-    public static final String shared_Pref_userName = "SHARED_PREF-USERNAME";
     private Context appContext = GlobalApplication.getAppContext();
     private TextView userEmail,loggedUserName;
     private UserHomeViewModel UserHomeModel;
