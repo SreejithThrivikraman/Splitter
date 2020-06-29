@@ -75,7 +75,7 @@ public class SignupActivity extends AppCompatActivity {
             public void onChanged(Status Status) {
                 if (Status.isFlag() == true) {
                     Toast.makeText(getApplicationContext(), "Sign Up Success !", Toast.LENGTH_LONG).show();
-                    Intent IntentHome = new Intent(getApplicationContext(),UserHome.class);
+                    Intent IntentHome = new Intent(getApplicationContext(), NavigationHeader.class);
                     startActivity(IntentHome);
                 } else {
                     AlertDialog alertDialog = new AlertDialog.Builder(SignupActivity.this).create();

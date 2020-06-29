@@ -5,11 +5,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.thrivikraman.sreejith.dev.splitter.GlobalApplication;
 import com.thrivikraman.sreejith.dev.splitter.R;
 import com.thrivikraman.sreejith.dev.splitter.databinding.ActivityLoginBinding;
 import com.thrivikraman.sreejith.dev.splitter.models.Status;
@@ -83,7 +81,7 @@ public class Login extends AppCompatActivity {
             public void onChanged(Status Status) {
                 if (Status.isFlag()) {
                     Toast.makeText(getApplicationContext(), "Login in Success !", Toast.LENGTH_LONG).show();
-                    Intent IntentHome = new Intent(getApplicationContext(),UserHome.class);
+                    Intent IntentHome = new Intent(getApplicationContext(), NavigationHeader.class);
                     startActivity(IntentHome);
                 } else {
                     AlertDialog alertDialog = new AlertDialog.Builder(Login.this).create();

@@ -1,21 +1,16 @@
 package com.thrivikraman.sreejith.dev.splitter.views;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.thrivikraman.sreejith.dev.splitter.GlobalApplication;
 import com.thrivikraman.sreejith.dev.splitter.R;
-import com.thrivikraman.sreejith.dev.splitter.viewModels.LoginViewModel;
-import com.thrivikraman.sreejith.dev.splitter.viewModels.SignInViewModel;
-import com.thrivikraman.sreejith.dev.splitter.viewModels.UserHomeViewModel;
+import com.thrivikraman.sreejith.dev.splitter.viewModels.NavigationHeaderViewModel;
 
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -27,13 +22,13 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-public class UserHome extends AppCompatActivity {
+public class NavigationHeader extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private Context appContext = GlobalApplication.getAppContext();
     private TextView userEmail,loggedUserName;
-    private UserHomeViewModel UserHomeModel;
-    private UserHomeViewModel userHomeVm;
+    private NavigationHeaderViewModel UserHomeModel;
+    private NavigationHeaderViewModel userHomeVm;
     private FirebaseAuth currentUserData;
 
     @Override
@@ -43,7 +38,7 @@ public class UserHome extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
-         NavigationView navigationView = findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
 
          //Setup Navigation Header
         View mnavigationHeader = navigationView.getHeaderView(0);
@@ -61,7 +56,7 @@ public class UserHome extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        UserHomeModel = ViewModelProviders.of(this).get(UserHomeViewModel.class);
+        UserHomeModel = ViewModelProviders.of(this).get(NavigationHeaderViewModel.class);
         setupHeadder();
     }
 
@@ -109,5 +104,4 @@ public class UserHome extends AppCompatActivity {
             }
         });
     }
-
 }

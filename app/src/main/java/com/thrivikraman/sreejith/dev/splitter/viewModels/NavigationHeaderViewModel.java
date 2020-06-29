@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class UserHomeViewModel extends ViewModel {
+public class NavigationHeaderViewModel extends ViewModel {
 
     public MutableLiveData<String> FullName = new MutableLiveData<>();
     public MutableLiveData<String> emailAddress = new MutableLiveData<>();
