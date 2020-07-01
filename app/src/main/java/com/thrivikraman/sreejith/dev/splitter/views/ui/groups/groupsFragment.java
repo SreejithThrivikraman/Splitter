@@ -1,14 +1,19 @@
 package com.thrivikraman.sreejith.dev.splitter.views.ui.groups;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.thrivikraman.sreejith.dev.splitter.GlobalApplication;
 import com.thrivikraman.sreejith.dev.splitter.R;
+import com.thrivikraman.sreejith.dev.splitter.views.ui.friends.FriendListAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,42 +22,30 @@ import com.thrivikraman.sreejith.dev.splitter.R;
  */
 public class groupsFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private RecyclerView recyclerView;
+    private RecyclerView.LayoutManager layoutManager;
+    public String[] myDataset = {"Group 1","Group 2","Group 3","Group 4","Group 5","Group 6","Group 7","Group 8","Group 9"};
+    public GlobalApplication appContext;
 
     public groupsFragment() {
         // Required empty public constructor
     }
 
-
-    public static groupsFragment newInstance(String param1, String param2) {
-        groupsFragment fragment = new groupsFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_groups, container, false);
+        View root =  inflater.inflate(R.layout.fragment_groups, container, false);
+
+        Context ct = appContext.getAppContext();
+        FriendListAdapter friendAdapter = new FriendListAdapter(ct,myDataset);
+
+        recyclerView = (RecyclerView) root.findViewById(R.id.groupList);
+        recyclerView.setHasFixedSize(true);
+
+        // use a linear layout manager
+        layoutManager = new LinearLayoutManager(root.getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(friendAdapter);
+        return root;
     }
 }

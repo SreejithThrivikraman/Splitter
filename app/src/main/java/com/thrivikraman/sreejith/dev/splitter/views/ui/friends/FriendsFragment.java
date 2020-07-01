@@ -21,7 +21,6 @@ import com.thrivikraman.sreejith.dev.splitter.R;
 public class FriendsFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
     public String[] myDataset = {"reay","goofy", "erick","Sreejith","Jones","Simran","Damien","Damien","Damien"};
     public GlobalApplication gb;
