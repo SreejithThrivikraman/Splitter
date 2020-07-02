@@ -7,15 +7,18 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.thrivikraman.sreejith.dev.splitter.R;
+
+import java.util.ArrayList;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class FriendListAdapter extends RecyclerView.Adapter<FriendListAdapter.MyViewHolder> {
 
     Context context;
-    String s1[];
+    ArrayList<String > s1;
 
-    public FriendListAdapter(Context ct, String s1[]) {
+    public FriendListAdapter(Context ct, ArrayList<String> s1) {
 
         this.context = ct;
         this.s1 = s1;
@@ -34,13 +37,13 @@ public class FriendListAdapter extends RecyclerView.Adapter<FriendListAdapter.My
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        holder.FriendName.setText(s1[position]);
+        holder.FriendName.setText(s1.get(position));
         holder.FriendImage.setImageResource(R.drawable.coin_us_dollar_icon_48);
     }
 
     @Override
     public int getItemCount() {
-        return s1.length;
+        return s1.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{

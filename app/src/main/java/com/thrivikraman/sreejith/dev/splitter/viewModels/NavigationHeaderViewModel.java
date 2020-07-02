@@ -46,7 +46,6 @@ public class NavigationHeaderViewModel extends ViewModel {
                     if((dp.child("Details/email").getValue().toString()).equals(user.getEmail())) {
                         FullName.setValue(dp.child("Details/fullName").getValue().toString());
                         // apply local storage of name and email
-
                         break;
                     } else {
                         FullName.setValue("Unknown User");

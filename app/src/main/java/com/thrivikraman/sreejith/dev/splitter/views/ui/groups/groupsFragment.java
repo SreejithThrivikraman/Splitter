@@ -15,11 +15,7 @@ import com.thrivikraman.sreejith.dev.splitter.GlobalApplication;
 import com.thrivikraman.sreejith.dev.splitter.R;
 import com.thrivikraman.sreejith.dev.splitter.views.ui.friends.FriendListAdapter;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link groupsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class groupsFragment extends Fragment {
 
     private RecyclerView recyclerView;
@@ -37,7 +33,7 @@ public class groupsFragment extends Fragment {
         View root =  inflater.inflate(R.layout.fragment_groups, container, false);
 
         Context ct = appContext.getAppContext();
-        FriendListAdapter friendAdapter = new FriendListAdapter(ct,myDataset);
+        groupListAdapter friendAdapter = new groupListAdapter(ct,myDataset);
 
         recyclerView = (RecyclerView) root.findViewById(R.id.groupList);
         recyclerView.setHasFixedSize(true);
